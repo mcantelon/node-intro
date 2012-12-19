@@ -681,6 +681,13 @@ board.on("ready", function() {
 
       <article>
         <h3>
+          Search npm via npmjs.org
+        </h3>
+      <img class='centered' style='margin-top: 50px' src='images/searchnpm.png'>
+      </article>
+
+      <article>
+        <h3>
           Installing and publishing modules with NPM
         </h3>
 
@@ -701,6 +708,7 @@ $ npm publish</pre>
         </section>
       </article>
 
+<!--
       <article>
         <h3>
           Publishing to NPM: super easy
@@ -722,6 +730,7 @@ $ npm publish</pre>
           to support for experimental TCP/IP protocols.
         </p>
       </article>
+-->
 
       <article>
         <h3>
@@ -825,6 +834,16 @@ flow.series([
               nimble
             <td>
               Flow control
+          <tr>
+            <td>
+              mocha
+            <td>
+              Unit testing
+          <tr>
+            <td>
+              tobi
+            <td>
+              Functional web testing
         </table>
  
       </article>
@@ -842,6 +861,82 @@ flow.series([
         <iframe src='http://www.google.com/doodle4google/history.html'></iframe>
       </article>
       -->
+
+       <article>
+        <h1>
+          Quick notes on production deployment
+        </h1>
+      </article>
+
+      <article>
+       <h3>
+          Node hosting
+        </h3>
+        <ul>
+          <li>
+            Pretty standard: run one or more Node instances and keep them up
+          </li>
+          <li>
+            Runs fine on bare metal, VPS, cloud instances
+          </li>
+          <li>
+            Some hosting companies like Nodejitsu and Heroku offer easy, Node-specific deployment
+          </li>
+        </ul>
+      </article>
+
+      <article>
+       <h3>
+          Application control/uptime
+        </h3>
+        <ul>
+          <li>
+            Use Upstart scripts to manage the starting/stopping of Node applications
+          </li>
+          <li>
+            "Forever" is a quick way to keep a Node app running
+          </li>
+          <li>
+            Monit provides a more robust way to keep Node running
+          </li>
+          <li>
+            Tools like Fleet can allow you to easily deploy new code to multiple servers
+          </li>
+        </ul>
+      </article>
+
+      <article>
+       <h3>
+          Leveraging multiple cores
+        </h3>
+        <ul>
+          <li>
+            Max server performance by runing one app instance per core
+          </li>
+          <li>
+            Node has an API for this: the "cluster" API
+          </li>
+          <li>
+            Redis is often used to share data between instances
+          </li>
+        </ul>
+      </article>
+
+      <article>
+       <h3>
+          Serving static assets
+        </h3>
+        <ul>
+          <li>
+            Nginx is better than Node at serving static assets
+          </li>
+          <li>
+            By proxying Node through Nginx you can get the best of both worlds
+          </li>
+        </ul>
+      </article>
+
+
 
       <article>
         <h3>
