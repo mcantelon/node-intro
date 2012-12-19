@@ -34,6 +34,13 @@
       
       <!-- Your slides (<article>s) go here. Delete or comment out the
            slides below. -->
+ 
+      <article>
+        <h1>
+          Write your name/email on a piece of paper and put it in the thing
+          to win an ebook thing
+        </h1>
+      </article>
       
       <article>
         <h1>
@@ -63,17 +70,19 @@
             Co-author of "Node.js in Action"
           </li>
           <li>
-            Like trying different technologies
-          </li>
-          <li>
             Develop open source digital archiving software
             for Artefactual Systems
           </li>
           <li>
-            Thanks to RJUG and Apex Systems for inviting me to speak!
+            Like long walks on the beach and fire
+          </li>
+          <li>
+            Believe that we can learn from animals if we listen
+            to them with our hearts
           </li>
         </ul>
       </article>
+
 
       <article>
        <h3>
@@ -98,8 +107,6 @@
           </li>
         </ul>
       </article>
-
-
 
       <article>
         <h1>
@@ -177,9 +184,23 @@
       </article>
 
       <article>
+        <h3>
+          Control Arduinos with JavaScript...
+        </h3>
+      <img class='centered' style='margin-top: 50px' src='images/johnny.png'>
+      </article>
+
+      <article>
+        <h3>
+          ...or infernal flying machines!
+        </h3>
+      <img class='centered' style='Hheight: 200px; margin-top: 110px' src='images/copterair.png'>
+      </article>
+
+      <article>
 <img src='images/logos.png' style='float:right'/>
         <h3>
-          Who uses Node?
+          Who else uses Node?
         </h3>
         <ul>
           <li>
@@ -237,12 +258,14 @@
           </p>
       </article>
 
+<!--
       <article>
         <h3>
           The event-loop conceptually
         </h3>
       <img class='centered' style='height: 200px; margin-top: 110px' src='images/eventloop_simple.png'>
       </article>
+-->
 
       <article>
         <h1>
@@ -353,6 +376,14 @@ console.log('I execute first!');
         </section>
       </article>
 
+
+      <article>
+        <h3>
+          Some confusion is normal
+        </h3>
+      <img class='centered' style='margin-top: 50px' src='images/coons.jpg'>
+      </article>
+
 <!-- 
        <article>
         <h3>
@@ -432,6 +463,27 @@ someFunction(someOtherFuction);
       </article>
 
       <article>
+        <h3>Installing Node is easy</h3>
+
+        <ul>
+          <li>
+            Standalone installers for Windows and Mac OS X
+          </li>
+          <li>
+            Installers available at <a href='http://nodejs.org/#download'>nodejs.org/#download</a>
+          </li>
+          <li>
+            On Mac, with homebrew, you can "brew install node"
+          </li>
+          <li>
+            Compiling on Mac OS X (with XCode installed) and 
+            Linux is also straightforward
+          </li>
+        </ul>
+      </article>
+
+
+      <article>
         <h3>
           Node's REPL
         </h3>
@@ -454,6 +506,7 @@ Hello World!
         </section>
 
       </article>
+
 
       <article>
         <h3>
@@ -576,23 +629,27 @@ function broadcast(fromId, message) {
       </article>
 
       <article>
-        <h3>Installing Node is easy</h3>
+       <h3>
+          Johnny Five Arduino example
+        </h3>
+        <section><pre>
+var five = require("johnny-five"), board, led;
 
-        <ul>
-          <li>
-            Standalone installers for Windows and Mac OS X
-          </li>
-          <li>
-            Installers available at <a href='http://nodejs.org/#download'>nodejs.org/#download</a>
-          </li>
-          <li>
-            On Mac, with homebrew, you can "brew install node"
-          </li>
-          <li>
-            Compiling on Mac OS X (with XCode installed) and 
-            Linux is also straightforward
-          </li>
-        </ul>
+board = new five.Board();
+
+board.on("ready", function() {
+  led = new five.Led({
+    pin: 13
+  });
+
+  led.on();
+  led.off();
+
+  this.wait( 3000, function() {
+    led.on();
+  });
+});
+</pre></section>
       </article>
 
       <article>
@@ -646,7 +703,7 @@ $ npm publish</pre>
 
       <article>
         <h3>
-          Publishing to NPM
+          Publishing to NPM: super easy
         </h3>
 
         <p>The package.json file must include, at the least, a name and version number.</p>
