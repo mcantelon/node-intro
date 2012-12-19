@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+
+<!--
+  Google HTML5 slide template
+
+  Authors: Luke Mahé (code)
+           Marcin Wichary (code and design)
+           
+           Dominic Mazzoni (browser compatibility)
+           Charles Chen (ChromeVox support)
+
+  URL: http://code.google.com/p/html5slides/
+-->
+
+<html>
+  <head>
+    <title>Presentation</title>
+
+    <meta charset='utf-8'>
+    <script
+      src='slides.js'></script>
+  </head>
+  
+  <style>
+    /* Your individual styles here, or just use inline styles if that’s
+       what you want. */
+    
+    
+  </style>
+
+  <body style='display: none'>
+
+    <section class='slides layout-regular template-default'>
+      
+      <!-- Your slides (<article>s) go here. Delete or comment out the
+           slides below. -->
+      
+      <article>
+        <h1>
+          Getting Started
+          <br>
+          With Node.js
+        </h1>
+        <p>
+          Mike Cantelon
+          <br>
+          April 18, 2012
+        </p>
+      </article>
+ 
+      <article>
+       <h3>
+          Hi, I'm Mike
+        </h3>
+         <p>
+          <img style='float: right' src='images/nia_cover.jpg'/>
+        </p>
+        <ul>
+          <li>
+            Node.js enthusiast
+          </li>
+          <li>
+            Co-author of "Node.js in Action"
+          </li>
+          <li>
+            Like trying different technologies
+          </li>
+          <li>
+            Develop open source digital archiving software
+            for Artefactual Systems
+          </li>
+          <li>
+            Thanks to RJUG and Apex Systems for inviting me to speak!
+          </li>
+        </ul>
+      </article>
+
+      <article>
+       <h3>
+          What this talk will cover
+        </h3>
+        <ul>
+          <li>
+            What is Node.js and why would I want to use it?
+          </li>
+          <li>
+            How is developing in Node different?
+          </li>
+          <li>
+            What does Node development look like?
+          </li>
+          <li>
+            What tools and frameworks are available to extend
+            Node's capabilities?
+          </li>
+          <li>
+            Where can I find help?
+          </li>
+        </ul>
+      </article>
+
+
+
+      <article>
+        <h1>
+          What is Node.js and why would I want to use it?
+        </h1>
+      </article>
+     
+      <article>
+        <h3>
+          Node.js aka Node is...
+        </h3>
+        <ul>
+          <li>
+            A framework that allows applications to be written in JavaScript
+          </li>
+          <li>
+            Built on Google's V8 JavaScript engine
+          </li>
+          <li>
+            Cross-platform
+          </li>
+        </ul>
+          <p>   
+          <img class='centered' src='images/node.png'>
+        </p>
+      </article>
+
+      <article class='smaller'>
+        <q>
+           I had a rather sudden epiphany that JavaScript was actually
+           the perfect language for what I wanted: single threaded, without
+           preconceived notions of "server-side" I/O, without existing
+           libraries.
+        </q>
+        <div class='author'>
+          Ryan Dahl
+        </div>
+      </article>
+
+      <article>
+        <h3>
+          What makes Node different?
+        </h3>
+        <ul>
+          <li>
+            Event-driven, single-threaded
+          </li>
+          <li>
+            Minimalist API
+          </li>
+          <li>
+            Thriving add-on ecosystem
+          </li>
+        </ul>
+        <img class='centered' style='margin-top: 60px' src='images/npm.png'>
+      </article>
+
+      <article>
+        <h3>
+          What is Node best at?
+        </h3>
+        <ul>
+          <li>
+            I/O-bound applications
+            <ul>
+              <li>HTTP applications</li>
+              <li>Multi-user games and chat</li>
+              <li>TCP/IP proxies</li>
+            </ul>
+          </li>
+          <li>
+            TCP/IP protocol development
+          </li>
+        </ul>
+      </article>
+
+      <article>
+<img src='images/logos.png' style='float:right'/>
+        <h3>
+          Who uses Node?
+        </h3>
+        <ul>
+          <li>
+            Github
+              <ul><li>project archive downloads</li></ul>
+          </li>
+          <li>
+            Craiglist
+              <ul><li>SMTP delivery</li></ul>
+          </li>
+          <li>
+            Voxer
+              <ul><li>smartphone VOIP app</li></ul>
+          </li>
+          <li>
+            Storify
+              <ul><li>web application</li></ul>
+          </li>
+        </ul>
+     </article>
+
+
+      <article>
+        <h1>
+          How is event-driven programming different?
+        </h1>
+      </article>
+
+      <article>
+        <h3>
+          Event-driven programming characteristics
+        </h3>
+        <ul>
+          <li>
+            Also called asynchronous programming
+          </li>
+          <li>
+            You describe what should happen if an event occurs, but not the specific order in which events should occur
+          </li>
+          <li>
+            Goal is to avoid CPU time spent waiting
+          </li>
+          <li>
+            Most UI programming is event-driven
+          </li>
+        </ul>
+      </article>
+
+      <article>
+        <h3>
+          Cooking as a metaphor
+          </h3>
+          <p>
+          <img class='centered' style='height: 500px' src='images/cooking.png'>
+          </p>
+      </article>
+
+      <article>
+        <h3>
+          The event-loop conceptually
+        </h3>
+      <img class='centered' style='height: 200px; margin-top: 110px' src='images/eventloop_simple.png'>
+      </article>
+
+      <article>
+        <h1>
+          What does event-driven programming in JavaScript look like?
+        </h1>
+      </article>
+
+       <article>
+        <h3>
+          JavaScript event-driven programming relies heavily on callbacks
+        </h3>
+        <ul>
+          <li>
+            Callbacks are essentially logic given to a function 
+            as an argument
+          </li>
+          <li>
+            It's easy to use functions as arguments in JavaScript
+          </li>
+          <li>
+            Functions passed as arguments can either be named or anonymous
+          </li>
+        </ul>
+      </article>
+
+      <article>
+        <h3>
+          What a JavaScript callback looks like
+        </h3>
+
+        <section>
+        <pre style='font-size: 1em; line-height: 1em;'>
+someFunction(function(result) {
+  // callback logic
+  // does something
+  // with result
+});</pre>
+        </section>
+
+        <ol>
+          <li>
+            someFunction spends time doing something
+          </li>
+          <li>
+            One it's done it executes the function provided
+            as an argument to it, providing its results
+            as an argument
+          </li>
+        </ol>
+
+      </article>
+ 
+      <article>
+        <h3>
+          JavaScript callback examples
+        </h3>
+
+        <ul>
+          <li>
+            Two callback examples: one using an anonymous function and one using a named function
+          </li>
+        </ul>
+
+        <section>
+        <pre>
+setTimeout(function() {
+  console.log('I execute after a delay!');
+}, 1000);</pre>
+        </section>
+
+        <section>
+        <pre>
+function displayMessage() {
+  console.log('I execute after a delay!');
+}
+
+setTimeout(displayMessage, 1000);
+</pre>
+        </section>
+      </article>
+ 
+      <article>
+        <h3>
+          Event-driven application flow
+        </h3>
+
+        <ul>
+          <li>
+            The script below shows how event-driven programs behave differently
+          </li>
+          <li>
+            The built-in JavaScript function setTimeout executes a callback after a delay
+          </li>
+          <li>
+            Note that the first argument given to setTimeout is an anonymous
+            function
+          </li>
+        </ul>
+
+        <section>
+        <pre>
+setTimeout(function() {
+  console.log('I execute next!');
+}, 1000);
+
+console.log('I execute first!');
+</pre>
+        </section>
+      </article>
+
+<!-- 
+       <article>
+        <h3>
+          Event-driven dev. challenges
+        </h3>
+        <ul>
+          <li>
+            Debugging is harder
+          </li>
+          <li>
+            Application logic should not block
+          </li>
+          <li>
+            Callback nesting can result in messy code
+          </li>
+        </ul>
+        <section>
+        <pre>
+someFunction(function() {
+  someOtherFunction(function() {
+    yetAnotherFunction(function() {
+      iAmGettingDizzy(function() {
+        doSomeThing();
+      });
+    });
+  });
+});
+</pre>
+        </section>
+      </article>
+
+       <article>
+         <h3>
+           Writing non-blocking code
+         </h3>
+
+         <ul>
+           <li>
+             Blocking code is okay for quick solutions and modules often
+             come with functions with "Sync" in the name that aren't
+             asynchronous
+           </li>
+           <li>
+             When you want performance, avoid use of these functions
+           </li>
+         </ul>
+       </article>
+
+       <article>
+        <h3>
+          Cleaning up callback nesting
+        </h3>
+        <section>
+        <pre>
+function iAmGettingDizzy() {
+  doSomeThing();
+}
+
+function yetAnotherFunction() {
+  iAmGettingDizzy();
+}
+
+function someOtherFunction() {
+  yetAnotherFunction();
+}
+
+someFunction(someOtherFuction);
+</pre>
+        </section>
+      </article>
+-->
+
+       <article>
+        <h1>
+          So what does programming in Node look like?
+        </h1>
+      </article>
+
+      <article>
+        <h3>
+          Node's REPL
+        </h3>
+
+        <p>After installing Node, you can start the REPL by entering the following into a command-line prompt.</p>
+
+        <section>
+        <pre style="background-color: black; color: white">
+$ node
+> &#9632;</pre>
+        </section>
+
+        <p>Then enter the following to make Node say its first words. CTRL-d to exit.</p>
+
+        <section>
+        <pre style="background-color: black; color: white">
+> console.log('Hello World!');
+Hello World!
+> &#9632;</pre>
+        </section>
+
+      </article>
+
+      <article>
+        <h3>
+          Running Node scripts
+        </h3>
+
+        <p>Node scripts require no boilerplate for displaying output.</p>
+
+        <p>Place the following code in a file named "hello_world.js".</p>
+
+        <section>
+        <pre>
+console.log('Hello World!');</pre>
+        </section>
+
+        <p>You can then run this script by entering the following into the command-line.</p>
+
+        <section>
+        <pre style="background-color: black; color: white">
+$ node hello_world.js</pre>
+        </section>
+
+      </article>
+  
+      <article>
+        <h3>
+          hello_web.js
+        </h3>
+
+        <p>In code below we require the "http" module.</p>
+
+        <p>We then create a server with it that will listen for HTTP requests on TCP/IP port 8888.</p>
+
+        <p>We use an anonymous function to specify what should be done with each request.</p>
+
+        <section>
+        <pre>
+var http = require('http');
+
+http.createServer(function (request, response) {
+  response.writeHead(200, {'Content-Type': 'text/plain'});
+  response.end('Hello Web!\n');
+}).listen(8888);</pre>
+        </section>
+
+      </article>
+ 
+      <article>
+       <h3>
+          Building a TCP/IP chat server
+        </h3>
+        <p>Building a chat server provides a more substantial example.</p>
+        <ul>
+          <li>
+            Chat server should store information about each user connecting
+          </li>
+          <li>
+            When a user disconnects we should delete this information
+          </li>
+          <li>
+            When a user sends a message we should send it to all other connected users
+          </li>
+          <li>
+            Along with the user's message we should display an identifier
+          </li>
+        </ul>
+      </article>
+
+
+      <article>
+        <h3>
+          chat_server.js (part 1 of 2)
+        </h3>
+
+        <section>
+        <pre>
+var net = require('net')
+  , clients = {};
+
+var server = net.createServer(function(conn) {
+  var id = conn.remotePort;
+  conn.on('connect', function() {
+    clients[id] = conn;
+  });
+  conn.on('data', function(data) {
+    broadcast(id, data);
+  });
+  conn.on('end', function(data) {
+    delete clients[id];
+  });
+});
+
+server.listen(3000);</pre>
+        </section>
+      </article>
+
+      <article>
+        <h3>
+          chat_server.js (part 2 of 2)
+        </h3>
+
+        <ul>
+          <li>"broadcast" function relays messages to every client but the sender</li>
+        </ul>
+
+        <section>
+        <pre>
+function broadcast(fromId, message) {
+  // if a message, not a control key, has been sent, broadcast it
+  if (message.toString().slice(-1) == "\n") {
+    // send to each client except sender
+    for(var id in clients) {
+      if (fromId != id) {
+        clients[id].write(fromId + '> ' + message);
+      }
+    }
+  }
+}</pre>
+        </section>
+      </article>
+
+      <article>
+        <h3>Installing Node is easy</h3>
+
+        <ul>
+          <li>
+            Standalone installers for Windows and Mac OS X
+          </li>
+          <li>
+            Installers available at <a href='http://nodejs.org/#download'>nodejs.org/#download</a>
+          </li>
+          <li>
+            On Mac, with homebrew, you can "brew install node"
+          </li>
+          <li>
+            Compiling on Mac OS X (with XCode installed) and 
+            Linux is also straightforward
+          </li>
+        </ul>
+      </article>
+
+      <article>
+        <h1>
+          What tools and frameworks are available to extend
+          Node's capabilities?
+        </h1>
+      </article>
+
+      <article>
+       <h3>
+          The Node package manager is super useful
+        </h3>
+        <ul>
+          <li>
+            NPM comes bundled with Windows and Mac OS X standalone installers
+          </li>
+          <li>
+            Can install modules into an application or make them available globally
+          </li>
+          <li>
+            Application-specific installation of modules allows you to install specific versions
+          </li>
+          <li>
+            Global install is useful for installing command-line tools written using Node
+          </li>
+        </ul>
+      </article>
+
+      <article>
+        <h3>
+          Installing and publishing modules with NPM
+        </h3>
+
+        <p>An example installation of a module:</p>
+
+        <section>
+        <pre style="background-color: black; color: white">
+$ npm install socket.io</pre>
+        </section>
+
+        <p>When publishing a module, you must include a "package.json" file that specifies the module's name, version, etc.</p>
+
+        <p>An example of publishing a module:</p>
+
+        <section>
+        <pre style="background-color: black; color: white">
+$ npm publish</pre>
+        </section>
+      </article>
+
+      <article>
+        <h3>
+          Publishing to NPM
+        </h3>
+
+        <p>The package.json file must include, at the least, a name and version number.</p>
+
+        <section>
+          <pre>
+{
+  "name": "my_module",
+  "version": "0.0.1"
+}</pre>
+        </section>
+
+        <p>The NPM repository exists online and can be browsed at
+          <a href='http://npmjs.org'>search.npmjs.org</a>. Thousands
+          of modules exist for everything from automated testing
+          to support for experimental TCP/IP protocols.
+        </p>
+      </article>
+
+      <article>
+        <h3>
+          Data storage
+        </h3>
+
+        <p>Modules exist in NPM that allow Node to interface with
+        common data stores.</p>
+
+        <ul>
+          <li>
+            MySQL
+          </li>
+          <li>
+            PostgreSQL
+          </li>
+          <li>
+            MongoDB
+          </li>
+          <li>
+            Redis
+          </li>
+          <li>
+            SQLite
+          </li>
+          <li>
+            etc.
+          </li>
+        </ul>
+      </article>
+
+      <article>
+        <h3>
+          Flow control tools
+        </h3>
+
+        <p>In normally asynchronous development events can
+        occur in unpredictable sequences.</p>
+
+        <p>Tools exist to force asynchronous code to execute
+        either in parallel or sequentially.</p>
+
+        <p>These tools are often called "flow control" tools.</p>
+      </article>
+ 
+      <article>
+        <h3>
+          Flow control example
+        </h3>
+
+        <section>
+        <pre>
+var flow = require('nimble');
+
+flow.series([
+  function (callback) {
+    setTimeout(function() {
+      console.log('I execute first.');
+        callback();
+      }, 1000);
+  },
+  function (callback) {
+    setTimeout(function() {
+      console.log('I execute next.');
+      callback();
+    }, 500);
+  }
+]);</pre>
+        </section>
+
+      </article>
+ 
+      <article>
+        <h3>
+          Some useful Node modules
+       </h3>
+
+        <table>
+          <tr>
+            <td>
+              n
+            <td>
+              CLI tool to switch between Node versions
+          <tr>
+            <td>
+              express
+            <td>
+              Minimalist web framework
+          <tr>
+            <td>
+              socket.io
+            <td>
+              Client/server websockets support
+          <tr>
+            <td>
+              mongoose
+            <td>
+              MongoDB-backed data store
+          <tr>
+            <td>
+              nimble
+            <td>
+              Flow control
+        </table>
+ 
+      </article>
+
+      <!--
+      <article class='nobackground'>
+        <h3>
+          A slide with an embed + title
+        </h3>
+        
+        <iframe src='http://www.google.com/doodle4google/history.html'></iframe>
+      </article>
+
+      <article class='nobackground'>
+        <iframe src='http://www.google.com/doodle4google/history.html'></iframe>
+      </article>
+      -->
+
+      <article>
+        <h3>
+          Resources
+        </h3>
+        
+        <table>
+          <tr>
+            <td>
+              <a href='http://nodejs.org'>nodejs.org</a>
+            <td>
+              Node downloads and documentation
+          <tr>
+            <td>
+              <a href='http://search.npmjs.org'>search.npmjs.org</a>
+            <td>
+              Search NPM repository
+          <tr>
+            <td>
+              <a href='http://webchat.freenode.net/'>webchat.freenode.net</a>
+            <td>
+              Web interface to #node.js IRC channel
+          <tr>
+            <td>
+              <a href='http://groups.google.com/group/nodejs'>Google Group</a>
+            <td>
+              Online support
+          <tr>
+            <td>
+              <a href='http://howtonode.org/'>howtonode.org</a>
+            <td>
+              Blog with tutorials
+          <tr>
+            <td>
+              <a href='http://nodeup.com/'>Node Up</a>
+            <td>
+              Podcast featuring discussion among Node developers
+        </table>
+      </article>
+ 
+      <article>
+        <h1>
+          Questions?
+        </h1>
+
+        <div>
+          <span>Twitter:</span>
+          <a href='http://twitter.com/mcantelon'>@mcantelon</a>
+        </div>
+        <div>
+          <span>Forum:</span>
+          <a href='http://tinyurl.com/nodeinaction'>tinyurl.com/nodeinaction</a>
+        </div>
+        <div>
+          <span>Slides:</span>
+          <a href='http://mikecantelon.com/talks/rjug'>mikecantelon.com/talks/rjug</a>
+        </div>
+      </article>
+
+    </section>
+
+  </body>
+</html>
