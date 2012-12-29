@@ -630,6 +630,25 @@ function broadcast(fromId, message) {
 
       <article>
        <h3>
+          Piping example: echo server
+        </h3>
+
+        <ul>
+          <li>Piping is a high-level way to relay streaming data</li>
+          <li>Streaming data, rather than reading it into server memory in its entirety, minimizes memory usage</li>
+        </ul>
+        
+        <section><pre>var net = require('net');
+var server = net.createServer(function (c) {
+  c.write('hello\r\n');
+  c.pipe(c);
+});
+server.listen(8124, 'localhost');</pre></section>
+      </article>
+
+
+      <article>
+       <h3>
           Johnny Five Arduino example
         </h3>
         <section><pre>
