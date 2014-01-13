@@ -69,9 +69,6 @@
             Develop open source digital archiving software
             for Artefactual Systems
           </li>
-          <li>
-            Like technologies that make things easy
-          </li>
         </ul>
       </article>
 
@@ -638,7 +635,28 @@ function broadcast(fromId, message) {
 
       <article>
        <h3>
-          "Backpressure"
+          Stream piping
+        </h3>
+
+        <ul>
+          <li>Passes data chunk-by-chunk, not all at once</li>
+          <li>This lessens memory usage</li>
+        </ul>
+ 
+<p>For example, standard in sent as HTTP POST then echoed to standard out:</p>
+        
+        <section><pre>
+var request = require('request');
+var req = request.post('http://localhost:8000/');
+process.stdin.pipe(req).pipe(process.stdout);
+</pre></section>
+
+<img src='images/piping.png' class='centered' />
+      </article>
+
+      <article>
+       <h3>
+          "Back pressure"
         </h3>
 
         <ul>
@@ -671,62 +689,11 @@ someStream.on('data', function(data) {
 </pre></section>
       </article>
 
-
-      <article>
-       <h3>
-          Buffering from streams
-        </h3>
-
-        <ul>
-          <li>Common technique</li>
-          <li>Con: requires storing all chunks of data in memory until all chunks read</li>
-        </ul>
-
-        <section><pre># dealing with data from a stream
-var chunks;
-someStream.on('data', function(data) {
-  chunks = chunks + data;
-});
-someStream.on('end', function() {
-  # do something with chunks
-});
-</pre></section>
-      </article>
-
-      
-
-      <article>
-       <h3>
-          Piping
-        </h3>
-
-        <ul>
-          <li>Higher-level way to deal with chunked data</li>
-          <li>Less memory usage than naive buffering</li>
-        </ul>
-
-<p>Echo server example:</p>
-        
-        <section><pre>var net = require('net');
-var server = net.createServer(function (c) {
-  c.write('Hello!\r\n');
-  c.pipe(c);
-});
-server.listen(8124, 'localhost');</pre></section>
-      </article>
-
       <article>
         <h3>
           You can control Arduinos with Node...
         </h3>
       <img class='centered' style='margin-top: 50px' src='images/johnny.png'>
-      </article>
-
-      <article>
-        <h3>
-          ...or infernal flying machines!
-        </h3>
-      <img class='centered' style='Hheight: 200px; margin-top: 110px' src='images/copterair.png'>
       </article>
 
       <article>
@@ -751,6 +718,37 @@ board.on("ready", function() {
   });
 });
 </pre></section>
+      </article>
+
+      <article>
+        <h3>
+          Control drones too!
+        </h3>
+      <img class='centered' style='Hheight: 200px; margin-top: 110px' src='images/copterair.png'>
+      </article>
+
+      <article>
+       <h3>
+          ar-drone example
+        </h3>
+        <section><pre>
+var arDrone = require('ar-drone');
+var client  = arDrone.createClient();
+
+client.takeoff();
+
+client
+  .after(5000, function() {
+    this.clockwise(0.5);
+  })
+  .after(3000, function() {
+    this.stop();
+    this.land();
+  });
+</pre></section>
+
+<p><b>More options:</b> <a href='http://nodecopter.com/modules'>http://nodecopter.com/modules</a></p>
+
       </article>
 
       <article>
@@ -940,11 +938,6 @@ flow.series([
               mocha
             <td>
               Unit testing
-          <tr>
-            <td>
-              tobi
-            <td>
-              Functional web testing
         </table>
  
       </article>
@@ -1019,7 +1012,7 @@ flow.series([
             Node has an API to automate this: the "cluster" API
           </li>
           <li>
-            Redis is often used to share data between instances
+            Inter-process communication (IPC) or Redis used to share data between instances
           </li>
         </ul>
       </article>
@@ -1067,7 +1060,7 @@ flow.series([
               Blog with tutorials
           <tr>
             <td>
-              <a href='http://nodeschool.io/'>Node School</a>
+              <a href='http://nodeschool.io/'>nodeschool.io</a>
             <td>
               Self-testing for Node-related subjects
           <tr>
