@@ -44,7 +44,7 @@
         <p>
           Mike Cantelon
           <br>
-          December 29, 2012
+          January 13, 2014
         </p>
       </article>
  
@@ -63,15 +63,41 @@
             Co-author of "Node.js in Action"
           </li>
           <li>
+            Primarily a web applications developer
+          </li>
+          <li>
             Develop open source digital archiving software
             for Artefactual Systems
           </li>
           <li>
-            Like long walks on the beach and fire
+            Like technologies that make things easy
+          </li>
+        </ul>
+      </article>
+
+      <article>
+       <h3>
+          In case you get lost
+        </h3>
+         <p>
+          <img style='float: right' src='images/nia_cover.jpg'/>
+        </p>
+        <ul>
+          <li>
+            Node.js enthusiast
           </li>
           <li>
-            Believe that we can learn from animals if we listen
-            to them with our hearts
+            Co-author of "Node.js in Action"
+          </li>
+          <li>
+            Primarily a web applications developer
+          </li>
+          <li>
+            Develop open source digital archiving software
+            for Artefactual Systems
+          </li>
+          <li>
+            Like technologies that make things easy
           </li>
         </ul>
       </article>
@@ -113,30 +139,15 @@
         </h3>
         <ul>
           <li>
-            A framework that allows applications to be written in JavaScript
+            An application framework primarily for I/O bound applications
           </li>
           <li>
-            Built on Google's V8 JavaScript engine
-          </li>
-          <li>
-            Cross-platform
+            Applications are written in JavaScript
           </li>
         </ul>
           <p>   
           <img class='centered' src='images/node.png'>
         </p>
-      </article>
-
-      <article class='smaller'>
-        <q>
-           I had a rather sudden epiphany that JavaScript was actually
-           the perfect language for what I wanted: single threaded, without
-           preconceived notions of "server-side" I/O, without existing
-           libraries.
-        </q>
-        <div class='author'>
-          Ryan Dahl
-        </div>
       </article>
 
       <article>
@@ -157,13 +168,25 @@
         <img class='centered' style='margin-top: 60px' src='images/npm.png'>
       </article>
 
+      <article class='smaller'>
+        <q>
+           I had a rather sudden epiphany that JavaScript was actually
+           the perfect language for what I wanted: single threaded, without
+           preconceived notions of "server-side" I/O, without existing
+           libraries.
+        </q>
+        <div class='author'>
+          Ryan Dahl
+        </div>
+      </article>
+
       <article>
         <h3>
           What is Node best at?
         </h3>
         <ul>
           <li>
-            I/O-bound applications
+            Network applications
             <ul>
               <li>HTTP applications</li>
               <li>Multi-user games and chat</li>
@@ -177,23 +200,9 @@
       </article>
 
       <article>
-        <h3>
-          Control Arduinos with JavaScript...
-        </h3>
-      <img class='centered' style='margin-top: 50px' src='images/johnny.png'>
-      </article>
-
-      <article>
-        <h3>
-          ...or infernal flying machines!
-        </h3>
-      <img class='centered' style='Hheight: 200px; margin-top: 110px' src='images/copterair.png'>
-      </article>
-
-      <article>
 <img src='images/logos.png' style='float:right'/>
         <h3>
-          Who else uses Node?
+          Who uses Node?
         </h3>
         <ul>
           <li>
@@ -201,7 +210,7 @@
               <ul><li>project archive downloads</li></ul>
           </li>
           <li>
-            Craiglist
+            Craigslist
               <ul><li>SMTP delivery</li></ul>
           </li>
           <li>
@@ -209,7 +218,7 @@
               <ul><li>smartphone VOIP app</li></ul>
           </li>
           <li>
-            Storify
+            Walmart, Paypal, LinkedIn, etc. 
               <ul><li>web application</li></ul>
           </li>
         </ul>
@@ -286,7 +295,7 @@
 
       <article>
         <h3>
-          What a JavaScript callback looks like
+          What JavaScript callback usage looks like
         </h3>
 
         <section>
@@ -629,8 +638,38 @@ function broadcast(fromId, message) {
 
         <ul>
           <li>Node app I/O is often handled by streams</li>
-<!--          <li>Streams are implemented using what are called "event emitters"</li>
-          <li>Event emitters deal with various types of events and can send and receive data</li> -->
+          <li>Streams can be piped</li> 
+          <li>Streams can handle buffering when writing to
+              slow consumers</li>
+        </ul>
+
+      </article>
+
+      <article>
+       <h3>
+          "Backpressure"
+        </h3>
+
+        <ul>
+          <li>Term used in Node community to indicate
+          the degree of buffering that is needed between
+          two connection points</li>
+          <li>Think of a garden hose being inflated by water
+          pressure</li>
+        </ul>
+
+      </article>
+
+      <article>
+       <h3>
+          Event emitters
+        </h3>
+
+        <ul>
+          <li>Streams are implemented using what are called "event emitters"</li>
+          <li>Event emitters are used a lot in the Node core library and
+              in third-party modules</li>
+          <li>Event emitters deal with various types of events and can send and receive data</li> 
         </ul>
 
         <section><pre># dealing with data from a stream
@@ -643,7 +682,7 @@ someStream.on('data', function(data) {
 
       <article>
        <h3>
-          Buffering from stream
+          Buffering from streams
         </h3>
 
         <ul>
@@ -684,6 +723,19 @@ var server = net.createServer(function (c) {
 server.listen(8124, 'localhost');</pre></section>
       </article>
 
+      <article>
+        <h3>
+          You can control Arduinos with Node...
+        </h3>
+      <img class='centered' style='margin-top: 50px' src='images/johnny.png'>
+      </article>
+
+      <article>
+        <h3>
+          ...or infernal flying machines!
+        </h3>
+      <img class='centered' style='Hheight: 200px; margin-top: 110px' src='images/copterair.png'>
+      </article>
 
       <article>
        <h3>
@@ -921,7 +973,7 @@ flow.series([
 
        <article>
         <h1>
-          Quick notes on production deployment
+          Bonus: Quick notes on production deployment
         </h1>
       </article>
 
@@ -968,10 +1020,14 @@ flow.series([
         </h3>
         <ul>
           <li>
-            Max server performance by runing one app instance per core
+            Node apps, by default, only run one one core
           </li>
           <li>
-            Node has an API for this: the "cluster" API
+            You can run the same app on multiple cores to get better
+            performance
+          </li>
+          <li>
+            Node has an API to automate this: the "cluster" API
           </li>
           <li>
             Redis is often used to share data between instances
@@ -1031,6 +1087,30 @@ flow.series([
               <a href='http://nodeup.com/'>Node Up</a>
             <td>
               Podcast featuring discussion among Node developers
+        </table>
+      </article>
+ 
+      <article>
+        <h3>
+          In Case JavaScript Makes You Crasy
+        </h3>
+        
+        <table>
+          <tr>
+            <td>
+              <a href=''>virt.x.org</a>
+            <td>
+              virt.x
+          <tr>
+            <td>
+              <a href='http://search.npmjs.org'>search.npmjs.org</a>
+            <td>
+              Search NPM repository
+          <tr>
+            <td>
+              <a href='http://webchat.freenode.net/'>webchat.freenode.net</a>
+            <td>
+              Web interface to #node.js IRC channel
         </table>
       </article>
  
