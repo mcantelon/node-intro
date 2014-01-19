@@ -2,6 +2,7 @@ Getting Started with Node.js
 ============================
 
 This is an HTML5 presentation that provides an introduction to Node.js.
+Open `preso.html` in a web browser to view.
 
 It covers:
 * What is Node.js and why would I want to use it?
