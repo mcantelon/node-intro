@@ -635,36 +635,14 @@ function broadcast(fromId, message) {
         </h3>
 
         <ul>
-          <li>High level abstraction for handling streaming
-            data</li>
-          <li>I/O is often handled by streams</li>
-          <li>Streams can be piped</li> 
-          <li>Streams can handle buffering when writing to
-              slow consumers</li>
+          <li>Moving data from point A to B can be tricky</li>
+          <li>Data should be moved in chunks rather than all
+ at once</li>
+          <li>Streams provide high level abstraction for moving
+ data</li>
         </ul>
 
         <img src='images/hose_cropped.jpg' class='centered' />
-      </article>
-
-      <article>
-       <h3>
-          Stream piping
-        </h3>
-
-        <ul>
-          <li>Data handled chunk-by-chunk, not all at once</li>
-          <li>Chunking lessens memory usage</li>
-        </ul>
- 
-<p>For example, standard in sent as HTTP POST then echoed to standard out:</p>
-        
-        <section><pre>
-var request = require('request');
-var req = request.post('http://localhost:8000/');
-process.stdin.pipe(req).pipe(process.stdout);
-</pre></section>
-
-<img src='images/piping.png' class='centered' />
       </article>
 
       <article>
@@ -681,6 +659,25 @@ process.stdin.pipe(req).pipe(process.stdout);
         </ul>
 
         <img src='images/bulging_hose.jpg' class='centered' />
+      </article>
+
+      <article>
+       <h3>
+          Stream piping
+        </h3>
+
+        <ul>
+          <li>Streams can "pipe" data to each other</li>
+          <li>Kind of like Lego for data</li>
+        </ul>
+ 
+<p>For example, echoing contents of a file to standard out:</p>
+        
+        <section><pre>
+var fs = require('fs');
+var file = fs.createReadStream('sample.txt');
+file.pipe(process.stdout);
+</pre></section>
       </article>
 
 <!--
