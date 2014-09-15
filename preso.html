@@ -280,10 +280,10 @@
             as an argument
           </li>
           <li>
-            It's easy to use functions as arguments in JavaScript
+            Functions passed as arguments can either be named or anonymous
           </li>
           <li>
-            Functions passed as arguments can either be named or anonymous
+            It's easy to create anonymous functions in JavaScript
           </li>
         </ul>
       </article>
@@ -314,16 +314,9 @@ setTimeout(<i>callback</i>, <i>delay</i>);</pre>
 
         <ul>
           <li>
-            Two callback examples: one using an anonymous function and one using a named function
+            Two callback examples: one using a named function and one using an anonymous function
           </li>
         </ul>
-
-        <section>
-        <pre>
-setTimeout(function() {
-  console.log('I execute after a delay!');
-}, 1000);</pre>
-        </section>
 
         <section>
         <pre>
@@ -333,6 +326,13 @@ function displayMessage() {
 
 setTimeout(displayMessage, 1000);
 </pre>
+        </section>
+
+        <section>
+        <pre>
+setTimeout(function() {
+  console.log('I execute after a delay!');
+}, 1000);</pre>
         </section>
       </article>
  
@@ -516,7 +516,14 @@ $ node hello_world.js</pre>
         </section>
 
       </article>
-  
+ 
+      <article>
+        <h3>
+          hello_web.js
+        </h3>
+      <img class='centered' style='margin-top: 50px' src='images/http_server.png'>
+      </article>
+ 
       <article>
         <h3>
           hello_web.js
@@ -576,11 +583,12 @@ http.createServer(function (request, response) {
 
         <section>
         <pre>
-var net = require('net')
-  , clients = {};
+var net = require('net'),
+    clientId = 1,
+    clients = {};
 
 var server = net.createServer(function(conn) {
-  var id = conn.remotePort;
+  var id = clientId++;
   clients[id] = conn;
 
   conn.on('data', function(data) {
@@ -695,74 +703,6 @@ someStream.on('data', function(data) {
 </pre></section>
       </article>
 -->
-
-       <article>
-        <h1>
-          Controlling hardware
-        </h1>
-      </article>
-
-      <article>
-        <h3>
-          You can control Arduinos with Node...
-        </h3>
-      <img class='centered' style='margin-top: 50px' src='images/johnny.png'>
-      </article>
-
-      <article>
-       <h3>
-          Johnny Five Arduino example
-        </h3>
-        <section><pre>
-var five = require("johnny-five"), board, led;
-
-board = new five.Board();
-
-board.on("ready", function() {
-  led = new five.Led({
-    pin: 13
-  });
-
-  led.on();
-  led.off();
-
-  this.wait( 3000, function() {
-    led.on();
-  });
-});
-</pre></section>
-      </article>
-
-      <article>
-        <h3>
-          Control drones too!
-        </h3>
-      <img class='centered' style='Hheight: 200px; margin-top: 110px' src='images/copterair.png'>
-      </article>
-
-      <article>
-       <h3>
-          ar-drone example
-        </h3>
-        <section><pre>
-var arDrone = require('ar-drone');
-var client  = arDrone.createClient();
-
-client.takeoff();
-
-client
-  .after(5000, function() {
-    this.clockwise(0.5);
-  })
-  .after(3000, function() {
-    this.stop();
-    this.land();
-  });
-</pre></section>
-
-<p><b>More options:</b> <a href='http://nodecopter.com/modules'>http://nodecopter.com/modules</a></p>
-
-      </article>
 
       <article>
         <h1>
@@ -954,6 +894,75 @@ flow.series([
         </table>
  
       </article>
+
+       <article>
+        <h1>
+          Controlling hardware
+        </h1>
+      </article>
+
+      <article>
+        <h3>
+          You can control Arduinos with Node...
+        </h3>
+      <img class='centered' style='margin-top: 50px' src='images/johnny.png'>
+      </article>
+
+      <article>
+       <h3>
+          Johnny Five Arduino example
+        </h3>
+        <section><pre>
+var five = require("johnny-five"), board, led;
+
+board = new five.Board();
+
+board.on("ready", function() {
+  led = new five.Led({
+    pin: 13
+  });
+
+  led.on();
+  led.off();
+
+  this.wait( 3000, function() {
+    led.on();
+  });
+});
+</pre></section>
+      </article>
+
+      <article>
+        <h3>
+          Control drones too!
+        </h3>
+      <img class='centered' style='Hheight: 200px; margin-top: 110px' src='images/copterair.png'>
+      </article>
+
+      <article>
+       <h3>
+          ar-drone example
+        </h3>
+        <section><pre>
+var arDrone = require('ar-drone');
+var client  = arDrone.createClient();
+
+client.takeoff();
+
+client
+  .after(5000, function() {
+    this.clockwise(0.5);
+  })
+  .after(3000, function() {
+    this.stop();
+    this.land();
+  });
+</pre></section>
+
+<p><b>More options:</b> <a href='http://nodecopter.com/modules'>http://nodecopter.com/modules</a></p>
+
+      </article>
+
 
       <!--
       <article class='nobackground'>
