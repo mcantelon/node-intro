@@ -65,27 +65,6 @@
           <li>
             Primarily a web applications developer
           </li>
-          <li>
-            Develop open source digital archiving software
-            for Artefactual Systems
-          </li>
-        </ul>
-      </article>
-
-      <article>
-       <h3>
-          If you get lost don't worry
-        </h3>
-        <ul>
-          <li>
-            Some slides are a bit dense
-          </li>
-          <li>
-            Up at http://mikecantelon.com/talks/trijug
-          </li>
-          <li>
-            Stop me to ask questions anytime
-          </li>
         </ul>
       </article>
 
@@ -115,6 +94,24 @@
       </article>
 
       <article>
+       <h3>
+          If you get lost don't worry
+        </h3>
+        <ul>
+          <li>
+            Some slides are a bit dense
+          </li>
+          <li>
+            Up at http://mikecantelon.com/talks/trijug
+          </li>
+          <li>
+            Stop me to ask questions anytime
+          </li>
+        </ul>
+      </article>
+
+
+      <article>
         <h1>
           What is Node.js and why would I want to use it?
         </h1>
@@ -126,16 +123,62 @@
         </h3>
         <ul>
           <li>
-            An application framework primarily for I/O bound applications
+            JavaScript application framework
           </li>
           <li>
-            Applications are written in JavaScript
+            An application framework primarily for I/O bound applications
           </li>
         </ul>
           <p>   
           <img class='centered' src='images/node.png'>
         </p>
       </article>
+
+      <article>
+        <h3>
+          CPU-bound vs I/O-bound
+        </h3>
+        <img class='centered' style='margin-top: 50px;height: 450px' src='images/cpu_bound.png'>
+      </article>
+
+
+      <article>
+        <h3>
+          I/O bound application examples
+        </h3>
+        <ul>
+          <li>HTTP applications</li>
+          <li>Multi-user games and chat</li>
+          <li>TCP/IP proxies</li>
+          <li>Media streaming</li>
+          <li>VOIP</li>
+        </ul>
+      </article>
+
+      <article>
+        <img src='images/logos.png' style='float:right'/>
+        <h3>
+          Who uses Node?
+        </h3>
+        <ul>
+          <li>
+            Walmart, Paypal, LinkedIn, etc. 
+              <ul><li>web application</li></ul>
+          </li>
+          <li>
+            Craigslist
+              <ul><li>SMTP delivery</li></ul>
+          </li>
+          <li>
+            Voxer
+              <ul><li>smartphone VOIP app</li></ul>
+          </li>
+          <li>
+            Github
+              <ul><li>project archive downloads</li></ul>
+          </li>
+        </ul>
+     </article>
 
       <article>
         <h3>
@@ -155,66 +198,18 @@
         <img class='centered' style='margin-top: 60px' src='images/npm.png'>
       </article>
 
-      <article class='smaller'>
-        <q>
-           I had a rather sudden epiphany that JavaScript was actually
-           the perfect language for what I wanted: single threaded, without
-           preconceived notions of "server-side" I/O, without existing
-           libraries.
-        </q>
-        <div class='author'>
-          Ryan Dahl
-        </div>
-      </article>
-
       <article>
         <h3>
-          What is Node best at?
-        </h3>
-        <ul>
-          <li>
-            Network applications
-            <ul>
-              <li>HTTP applications</li>
-              <li>Multi-user games and chat</li>
-              <li>TCP/IP proxies</li>
-            </ul>
-          </li>
-          <li>
-            TCP/IP protocol development
-          </li>
-        </ul>
+          Node module downloads
+          </h3>
+          <p>
+          <img class='centered' style='height: 500px' src='images/npm_dls.png'>
+          </p>
       </article>
-
-      <article>
-<img src='images/logos.png' style='float:right'/>
-        <h3>
-          Who uses Node?
-        </h3>
-        <ul>
-          <li>
-            Github
-              <ul><li>project archive downloads</li></ul>
-          </li>
-          <li>
-            Craigslist
-              <ul><li>SMTP delivery</li></ul>
-          </li>
-          <li>
-            Voxer
-              <ul><li>smartphone VOIP app</li></ul>
-          </li>
-          <li>
-            Walmart, Paypal, LinkedIn, etc. 
-              <ul><li>web application</li></ul>
-          </li>
-        </ul>
-     </article>
-
 
       <article>
         <h1>
-          How is event-driven programming different?
+          How are event-driven applications different?
         </h1>
       </article>
 
@@ -247,6 +242,19 @@
           </p>
       </article>
 
+      <article class='smaller'>
+        <q>
+           I had a rather sudden epiphany that JavaScript was actually
+           the perfect language for what I wanted: single threaded, without
+           preconceived notions of "server-side" I/O, without existing
+           libraries.
+        </q>
+        <div class='author'>
+          Ryan Dahl
+        </div>
+      </article>
+
+
 <!--
       <article>
         <h3>
@@ -264,7 +272,7 @@
 
        <article>
         <h3>
-          JavaScript event-driven programming relies heavily on callbacks
+          JavaScript event-driven programming is normally done using callbacks
         </h3>
         <ul>
           <li>
@@ -282,34 +290,26 @@
 
       <article>
         <h3>
-          What JavaScript callback usage looks like
+          Example function using callback: <code>setTimeout</code>
         </h3>
+
+        <ul>
+          <li><code>setTimeout</code>: function built into Node and web browsers</li>
+          <li>Used to make something happen after a delay</li>
+          <li>The "something" is expressed as a callback</li>
+          <li>The delay is expressed in milliseconds</li>
+        </ul>
 
         <section>
         <pre style='font-size: 1em; line-height: 1em;'>
-someFunction(function(result) {
-  // callback logic
-  // does something
-  // with result
-});</pre>
+setTimeout(<i>callback</i>, <i>delay</i>);</pre>
         </section>
-
-        <ol>
-          <li>
-            someFunction spends time doing something
-          </li>
-          <li>
-            One it's done it executes the function provided
-            as an argument to it, providing its results
-            as an argument
-          </li>
-        </ol>
 
       </article>
  
       <article>
         <h3>
-          JavaScript callback examples
+          <code>setTimeout</code> examples
         </h3>
 
         <ul>
@@ -343,14 +343,11 @@ setTimeout(displayMessage, 1000);
 
         <ul>
           <li>
-            The script below shows how event-driven programs behave differently
+            Skimming event-driven code can be deceptive
           </li>
           <li>
-            The built-in JavaScript function setTimeout executes a callback after a delay
-          </li>
-          <li>
-            Note that the first argument given to setTimeout is an anonymous
-            function
+            In the script below "I execute first!" is first
+            text to output
           </li>
         </ul>
 
@@ -447,7 +444,7 @@ someFunction(someOtherFuction);
 
        <article>
         <h1>
-          So what does programming in Node look like?
+          First steps in Node development
         </h1>
       </article>
 
@@ -564,6 +561,13 @@ http.createServer(function (request, response) {
         </ul>
       </article>
 
+      <article>
+        <h3>
+          Two people chatting
+        </h3>
+      <img class='centered' style='margin-top: 50px' src='images/chat_a.png'>
+      <img class='centered' style='margin-top: 10px' src='images/chat_b.png'>
+      </article>
 
       <article>
         <h3>
@@ -577,9 +581,8 @@ var net = require('net')
 
 var server = net.createServer(function(conn) {
   var id = conn.remotePort;
-  conn.on('connect', function() {
-    clients[id] = conn;
-  });
+  clients[id] = conn;
+
   conn.on('data', function(data) {
     broadcast(id, data);
   });
@@ -624,7 +627,9 @@ function broadcast(fromId, message) {
         </h3>
 
         <ul>
-          <li>Node app I/O is often handled by streams</li>
+          <li>High level abstraction for handling streaming
+            data</li>
+          <li>I/O is often handled by streams</li>
           <li>Streams can be piped</li> 
           <li>Streams can handle buffering when writing to
               slow consumers</li>
@@ -639,8 +644,8 @@ function broadcast(fromId, message) {
         </h3>
 
         <ul>
-          <li>Passes data chunk-by-chunk, not all at once</li>
-          <li>This lessens memory usage</li>
+          <li>Data handled chunk-by-chunk, not all at once</li>
+          <li>Chunking lessens memory usage</li>
         </ul>
  
 <p>For example, standard in sent as HTTP POST then echoed to standard out:</p>
@@ -690,6 +695,12 @@ someStream.on('data', function(data) {
 </pre></section>
       </article>
 -->
+
+       <article>
+        <h1>
+          Controlling hardware
+        </h1>
+      </article>
 
       <article>
         <h3>
@@ -960,7 +971,7 @@ flow.series([
 
        <article>
         <h1>
-          Bonus: Quick notes on production deployment
+          Deploying Node applications
         </h1>
       </article>
 
